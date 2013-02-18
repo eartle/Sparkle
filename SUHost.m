@@ -55,15 +55,7 @@
 
 - (NSString *)appSupportPath
 {
-    NSArray *appSupportPaths = NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory, NSUserDomainMask, YES);
-    NSString *appSupportPath = nil;
-    if (!appSupportPaths || [appSupportPaths count] == 0)
-    {
-        SULog(@"Failed to find app support directory! Using ~/Library/Application Support...");
-        appSupportPath = [@"~/Library/Application Support" stringByExpandingTildeInPath];
-    }
-    else
-        appSupportPath = [appSupportPaths objectAtIndex:0];
+    NSString *appSupportPath = NSTemporaryDirectory();
     appSupportPath = [appSupportPath stringByAppendingPathComponent:[self name]];
     return appSupportPath;
 }
